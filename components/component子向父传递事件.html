@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>emit</title>
+</head>
+<body>
+<div id="app">
+    <cpn :c-movies="movies" @click-movie="clickMethod"></cpn>
+</div>
+
+</body>
+<template id="comp-son">
+    <div>
+        <h2 v-for="movie in cMovies" @click="clickmovie(movie)">{{movie}}</h2>
+    </div>
+</template>
+<script src="../js/vue.js" ></script>
+<script>
+    const cpn = {
+        template: '#comp-son',
+        data() {
+            return {}
+        },
+        props: {
+            cMovies: {
+                type: Array,
+                default: []
+            }
+        },
+        methods: {
+            clickmovie(movie) {
+                console.log('comp-son be clicked')
+                this.$emit('click-movie',movie)
+            }
+        }
+    }
+    const app = new Vue({
+        el: '#app',
+        data: {
+            movies:['海王', '海贼王']
+        },
+        components: {
+            cpn
+        },
+        methods: {
+            clickMethod(item) {
+                console.log('app log:' + item)
+            }
+        }
+    })
+</script>
+</html>

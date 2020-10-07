@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件之间的通信2</title>
+</head>
+<div id="app">
+    <button @click="click2">点击访问子组件方法</button>
+    <cpn :c-movies="movies" ref="cpnid"></cpn>
+</div>
+
+</body>
+<template id="comp-son">
+    <div>
+        <h2 v-for="movie in cMovies">{{movie}}</h2>
+    </div>
+</template>
+<script src="../js/vue.js" ></script>
+<script>
+    const cpn = {
+        template: '#comp-son',
+        data() {
+            return {
+                name: '子组件name'
+            }
+        },
+        props: {
+            cMovies: {
+                type: Array,
+                default: []
+            }
+        },
+        methods: {
+            clickmovie(movie) {
+                console.log('comp-son be clicked', movie)
+                console.log(this.$parent.movies);
+            }
+        }
+    }
+    const app = new Vue({
+        el: '#app',
+        data: {
+            movies:['海王', '海贼王']
+        },
+        components: {
+            cpn
+        },
+        methods: {
+            click2() {
+                // this.$children[0].clickmovie('test movie')
+                // console.log(this.$refs.cpnid.name);
+                this.$refs.cpnid.clickmovie('test movie')
+            }
+        }
+    })
+</script>
+</html>

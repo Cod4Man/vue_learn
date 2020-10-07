@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件间通信</title>
+</head>
+<body>
+
+<div id="app">
+    <h2>测试：</h2>
+    <hr>
+    <cpn :c-movies="movies"></cpn>
+</div>
+</body>
+
+
+<template id="comp-son">
+    <div>
+        <h2 v-for="item in cMovies">{{item}}</h2>
+    </div>
+</template>
+
+<script src="../js/vue.js" ></script>
+<script>
+    const cpn = {
+        template: '#comp-son',
+        props: {
+            cMovies: {
+                type: Array,
+                default: [],
+                required: true
+            }
+        }
+    }
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            movies: ['海王', '海贼王']
+        },
+        components: {
+            cpn
+        }
+    })
+
+</script>
+</html>

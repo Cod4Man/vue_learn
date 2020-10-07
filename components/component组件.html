@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+</head>
+<body>
+
+<div id="app">
+    <h2>测试：</h2>
+    <hr>
+    <far-com></far-com>
+</div>
+</body>
+
+<script type="text/x-template" id="comp-templ">
+    <div>
+        <h2>测试组件摸板</h2>
+    </div>
+</script>
+
+<template id="comp-templ2">
+    <div>
+        <h2>测试组件摸板2</h2>
+    </div>
+</template>
+
+<script src="../js/vue.js" ></script>
+<script>
+    // 1. 创建一个组件构造器对象
+    const myComponent = Vue.extend({
+        template : '#comp-templ'
+    })
+
+    const myComponentFar = Vue.extend({
+        template : '#comp-templ2',
+        components: {
+            conSon: myComponent
+        }
+    })
+    // 2. 注册组件
+    // Vue.component('my-com', myComponent)
+
+
+    const app = new Vue({
+        el: '#app',
+        components: {
+            'far-com': myComponentFar
+        }
+    })
+
+</script>
+</html>

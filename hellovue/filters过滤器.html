@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{price | filterPrice}}</div>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            price: 50123.2123
+        },
+        filters: {
+            filterPrice(price) {
+                return '￥' + price.toFixed(2)
+            }
+        }
+    })
+</script>
+</html>

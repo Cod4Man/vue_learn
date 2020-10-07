@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slot插槽</title>
+</head>
+<div id="app">
+    <cpn ref="cpnid">
+        <span>测试</span>
+        <span slot="third">测试</span>
+    </cpn>
+</div>
+
+</body>
+<template id="comp-son">
+    <div>
+        <slot><button>默认button</button></slot>
+        <span>固定值</span>
+        <slot name="second"><span>第二个插槽</span></slot>
+        <slot name="third"></slot>
+    </div>
+</template>
+<script src="../js/vue.js" ></script>
+<script>
+    const cpn = {
+        template: '#comp-son',
+        data() {
+            return {
+                name: '子组件name'
+            }
+        }
+    }
+    const app = new Vue({
+        el: '#app',
+        components: {
+            cpn
+        }
+    })
+</script>
+</html>
