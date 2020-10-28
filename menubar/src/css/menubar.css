@@ -1,0 +1,27 @@
+#menubar-main{
+    border: 2px solid red;
+    width: auto;
+    height: 49px;
+    display: flex;
+}
+
+.menubar-detail{
+    margin-right: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 1px solid #fe7fff;
+    flex: 1;
+
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+#main-interface {
+    color: #375688;
+    border: 2px solid #6eff9e;
+    width: 200px;
+    height: 200px;
+}
